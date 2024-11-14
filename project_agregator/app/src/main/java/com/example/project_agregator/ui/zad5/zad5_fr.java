@@ -7,8 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.project_agregator.R;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +64,67 @@ public class zad5_fr extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_zad5, container, false);
+        View view = inflater.inflate(R.layout.fragment_zad5, container, false);
+        Button prawa = view.findViewById(R.id.button_zad5_right);
+        Button lewa = view.findViewById(R.id.button_zad5_left);
+        ImageView zdjecie = view.findViewById(R.id.imageView_zad5);
+        EditText mojtekst = view.findViewById(R.id.Multiline_zad5);
+        String[][] array =
+                {
+                        {"0", "angel", "opis"},
+                        {"1", "angy", "opis"},
+                        {"2", "cool", "opis"},
+                        {"3", "deadass", "opis"},
+                        {"4", "thinky", "opis"},
+                        {"5", "sureabt", "opis"},
+                        {"6", "kitty", "opis"}
+                };
+        int[] licznik = {0};
+        prawa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                licznik[0]++;
+                if (licznik[0] == array.length - 1) {
+                    prawa.setEnabled(false);
+                } else {
+                    prawa.setEnabled(true);
+                }
+                if (licznik[0] > 0) {
+                    lewa.setEnabled(true);
+                }
+                if (licznik[0] >= 0 && licznik[0] < array.length) {
+                    zdjecie.setImageResource(R.drawable.sureabt);
+                }
+                String beforeopis = mojtekst.getText().toString();
+                array[(licznik[0] - 1)][2] = beforeopis;
+                mojtekst.setText((array[licznik[0]][2]));
+                String im = array[licznik[0]][1];
+                int imageResource = getResources().getIdentifier(im, "drawable", getActivity().getPackageName());
+                zdjecie.setImageResource(imageResource);
+            }
+            });
+        lewa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                licznik[0]--;
+                if (licznik[0] == 0) {
+                    lewa.setEnabled(false);
+                } else {
+                    lewa.setEnabled(true);
+                }
+                if (licznik[0] < array.length - 1) {
+                    prawa.setEnabled(true);
+                }
+
+                String beforeopis = mojtekst.getText().toString();
+                array[(licznik[0] + 1)][2] = beforeopis;
+                mojtekst.setText((array[licznik[0]][2]));
+                String im = array[licznik[0]][1];
+                int imageResource = getResources().getIdentifier(im, "drawable", getActivity().getPackageName());
+                zdjecie.setImageResource(imageResource);
+            }
+        });
+        lewa.setEnabled(false);
+        return view;
     }
 }
