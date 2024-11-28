@@ -1,14 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.zad7.zad7_fr">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/z7" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/kostka1"
+                android:layout_width="81dp"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:src="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/kostka2"
+                android:layout_width="81dp"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:src="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/kostka3"
+                android:layout_width="81dp"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:src="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/kostka4"
+                android:layout_width="81dp"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:src="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/kostka5"
+                android:layout_width="81dp"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:src="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/kostka6"
+                android:layout_width="81dp"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:src="@drawable/question" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_rzuc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="rzuć" />
+
+            <TextView
+                android:id="@+id/wynik_losu"
+                android:layout_width="435dp"
+                android:layout_height="wrap_content"
+                android:text="Wynik tego losowania:" />
+
+            <Button
+                android:id="@+id/button_resetuj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="resetuj" />
+
+            <TextView
+                android:id="@+id/wynik_gry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wynik gry:" />
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

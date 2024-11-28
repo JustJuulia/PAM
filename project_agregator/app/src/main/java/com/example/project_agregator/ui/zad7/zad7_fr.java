@@ -1,20 +1,18 @@
 package com.example.project_agregator.ui.zad7;
 
+import android.media.Image;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.project_agregator.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link zad7_fr#newInstance} factory method to
- * create an instance of this fragment.
- */
+import kotlin.random.Random;
+
 public class zad7_fr extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -26,19 +24,6 @@ public class zad7_fr extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public zad7_fr() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment zad7_fr.
-     */
-    // TODO: Rename and change types and number of parameters
     public static zad7_fr newInstance(String param1, String param2) {
         zad7_fr fragment = new zad7_fr();
         Bundle args = new Bundle();
@@ -60,7 +45,68 @@ public class zad7_fr extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_zad7, container, false);
+        View view = inflater.inflate(R.layout.fragment_zad7, container, false);
+        Button rzuc = view.findViewById(R.id.button_rzuc);
+        Button resetuj = view.findViewById(R.id.button_resetuj);
+        ImageView kostka1 = view.findViewById(R.id.kostka1);
+        ImageView kostka2 = view.findViewById(R.id.kostka2);
+        ImageView kostka3 = view.findViewById(R.id.kostka3);
+        ImageView kostka4 = view.findViewById(R.id.kostka4);
+        ImageView kostka5 = view.findViewById(R.id.kostka5);
+        ImageView kostka6 = view.findViewById(R.id.kostka6);
+        String[][] array =
+                {
+                        {"0", "kostka1"},
+                        {"0", "kostka2"},
+                        {"0", "kostka3"},
+                        {"0", "kostka4"},
+                        {"0", "kostka5"},
+                        {"0", "kostka6"}
+                };
+        int[] tabliczka={
+            R.drawable.oczko1,R.drawable.oczko2,R.drawable.oczko3,R.drawable.oczko4,R.drawable.oczko5,R.drawable.oczko6};
+        rzuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int i = 0;
+                while (i < 6) {
+                    int liczba = Random.Default.nextInt(6) + 1;
+                    array[i][0] = String.valueOf(liczba);
+                    i++;
+                }
+                setkostki(tabliczka, array, kostka1, kostka2, kostka3, kostka4, kostka5, kostka6);
+            }
+        });
+
+        return view;
+    }
+    private void setkostki(int[] t,String[][] arr, ImageView k1, ImageView k2, ImageView k3, ImageView k4, ImageView k5, ImageView k6){
+        int counter = 0;
+        while(counter < 6){
+            String oczko = "";
+            int num = Integer.parseInt(arr[counter][0]);
+            switch(counter){
+                case 0:
+                    k1.setImageResource(t[num]);
+                    break;
+                case 1:
+                    k2.setImageResource(t[num]);
+                    break;
+                case 2:
+                    k3.setImageResource(t[num]);
+                    break;
+                case 3:
+                    k4.setImageResource(t[num]);
+                    break;
+                case 4:
+                    k5.setImageResource(t[num]);
+                    break;
+                case 5:
+                    k6.setImageResource(t[num]);
+                    break;
+            }
+            counter++;
+        }
+
     }
 }
